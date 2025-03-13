@@ -31,6 +31,24 @@ async login({email,password}){
         throw error
     }
 }
+async getCurrentUser(){
+    try{
+        return await this.account.get()
+    }
+    catch(error){
+        console.log("Appwrite service :: getCurrentUser",error)
+    }
+    return null
+}
+async logout(){
+    try{
+        return await this.account.deleteSessions()
+    }
+    catch(error){
+        console.log("Appwrite service :: logout",error)
+    }
+    return null
+}
 }
 
 const authService= new AuthService();
